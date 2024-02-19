@@ -1,0 +1,38 @@
+
+.img {
+    width: 500px;
+    height: 600px;
+    }
+.h1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.b1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.b2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btt {
+    text-align: center;
+    background-color: #eee98bff;
+    border: none;
+    color: black; 
+    padding: 15px 15px;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 12px;
+}
+btt:hover{
+    background-color: #88cce3 ;
+}
+.p1{
+    display:flex;
+}

@@ -1,0 +1,29 @@
+.book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.box1{
+    display: flex;
+}
+.h1 {
+    text-align: left;
+}
+
+.btt {
+    text-align: center;
+    background-color: #eee98bff;
+    border: none;
+    color: black; 
+    padding: 15px 15px;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 12px;
+}
+
+.img {
+    flex: 1; /* ขยายให้เต็มความกว้างแนวนอน */
+    text-align: right; /* จัดรูปไปทางขวา */
+}

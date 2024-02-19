@@ -1,0 +1,142 @@
+body {
+  font-family: 'Kanit';
+  background-color: #f0f0f0;
+  margin: 0;
+  position: relative;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 80px;
+  padding-top: 80px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.text {
+  font-size: 1.5em;
+  color: #333;
+  font-weight: bold;
+}
+
+.underline {
+  width: 50px;
+  height: 4px;
+  background-color: #88cce3;
+  margin: 0.5em auto;
+}
+
+.inputs {
+  margin-top: 2em;
+  text-align: left;
+}
+
+.input {
+  margin-bottom: 1em;
+  position: relative;
+}
+
+.input img {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input input {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.input input:focus {
+  border-color: #88cce3;
+}
+
+.login-container {
+  margin-top: 1em;
+  
+}
+.login-button {
+  background-color: #88cce3;
+  color: black; /* Text color changed to black */
+  padding: 0.7em 1.5em;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none; /* Remove underline from text */
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #66a9b9; /* Darker shade on hover */
+  color: black; /* Text color remains black on hover */
+}
+
+.forgot-password-link {
+  font-size: 14px;
+  margin-left: auto;
+  text-decoration: none;
+  color: black;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+/* Media queries for responsive adjustments */
+@media (min-width: 768px) { /* Tablet and up */
+  .container {
+    margin: auto;
+    width: 60%;
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 992px) { /* Desktop and up */
+  .container {
+    margin: auto;
+    width: 40%;
+    max-width: 500px;
+  }
+}
+
+/* Styles for Google and Facebook login buttons */
+.google-login-button,
+.facebook-login-button {
+  display: inline-block;
+  margin-top: 1em;
+}
+
+.google-button,
+.facebook-button {
+  background-color: #88cce3; /* Google Blue and Facebook Blue */
+  color: black; /* Text color changed to black */
+  border: none;
+  padding: 0.7em 1.5em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px; /* Add some spacing between buttons */
+}
+
+.google-button:hover,
+.facebook-button:hover {
+  background-color: #88cce3; /* Darker shade on hover */
+}

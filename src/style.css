@@ -1,0 +1,25 @@
+*{
+    box-sizing:border-box;
+    font-family: 'Kanit', sans-serif;
+    padding: 7px 10px 0px 10px;
+}
+
+
+body {
+    margin:0;
+}
+.nav{
+    color:black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    box-sizing: content-box;
+}
+.site-title {
+    font-size: 3rem;
+    font-weight: bold;
+}
+/* This is a single-line comment 
+
+*/

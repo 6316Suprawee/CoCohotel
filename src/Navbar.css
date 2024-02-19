@@ -1,0 +1,109 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999; /* to keep it on top of other elements */
+}
+  .nav-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .site-title {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .menu-button {
+    display: none;
+    border: none;
+    color: black;
+    padding: 1rem 1.5rem;  /* Increased padding */
+    font-size: 24px;       /* Increased font size */
+  }
+  
+  .nav-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
+    white-space: nowrap;  /* Prevent text from wrapping */
+  }
+  
+  .nav-list.open {
+    position: absolute;
+    top: 60px; /* Adjust based on the height of your navbar */
+    left: 0;
+    width: 100%;
+    background-color: #eee98b;
+}
+
+  
+  .nav-list li {
+    padding: 0.5rem 1rem;
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .btn-container {
+    background-color: #eee98b;
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    .menu-button {
+      display: block;
+      background-color: inherit;
+      padding: 1rem 1.5rem;
+      font-size: 24px;
+      background-color: #eee98b;
+      border-radius: 12px;
+    }
+  
+    .nav-list {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: white; /* Background color set to white when zoomed in */
+    }
+  
+    .nav-list.open {
+      display: flex;
+      justify-content: center;  /* Center vertically */
+      align-items: center;      /* Center horizontally */
+    }
+  
+    .nav-list li {
+      width: 100%;
+      text-align: center;  /* Center text */
+    }
+  
+    .btn-container {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  @media screen and (min-width: 769px) {
+    .nav {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .nav-list {
+      justify-content: flex-end;  /* Shift nav items to the right */
+    }
+  }
+  
