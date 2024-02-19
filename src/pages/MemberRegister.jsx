@@ -43,7 +43,7 @@ const MemberRegister = () => {
       }
   
       // ส่งข้อมูลไปยัง MongoDB โดยใช้ Axios
-      await axios.post('https://co-cohotel-server.vercel.app/api/register', {
+      await axios.post('https://co-cohotel-server-65dx.vercel.app/api/register', {
         email: userData.email,
         password: userData.password,
         Name: userData.Name,
