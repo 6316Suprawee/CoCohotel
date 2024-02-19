@@ -86,9 +86,9 @@ const MemberRegister = () => {
         </div>
       </div>
       <div className='summit-container'>
-        <div className='submit' onClick={handleRegister}>
-          <a href="/Booking"> Register </a>
-        </div>
+        <button className='submit' onClick={handleRegister}>
+          Register
+        </button>
       </div>
     </div>
   );
