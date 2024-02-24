@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './MemberRegister.css';
 import axios from 'axios'; // เพิ่มการนำเข้า Axios สำหรับทำ HTTP requests
+//import {Routes, Route, useNavigate} from 'react-router-dom';
 
 const MemberRegister = () => {
+//  const router = useNavigate();
   const [userData, setUserData] = useState({
     email: '',
     password: '',
@@ -36,20 +38,25 @@ const MemberRegister = () => {
       }
   
       // ตรวจสอบรหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัว และประกอบด้วยตัวเลขและตัวอักษรผสมกัน
-      const passwordPattern = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
-      if (!passwordPattern.test(userData.password)) {
-        console.error('Password must be at least 8 characters long and contain a combination of numbers and letters');
-        return;
-      }
+      // const passwordPattern = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
+      // if (!passwordPattern.test(userData.password)) {
+      //   console.error('Password must be at least 8 characters long and contain a combination of numbers and letters');
+      //   return;
+      // }
   
       // ส่งข้อมูลไปยัง MongoDB โดยใช้ Axios
-      await axios.post('https://co-cohotel-server-65dx.vercel.app/api/register', {
+      let res = await axios.post('http://localhost:3001/api/register', {
         email: userData.email,
         password: userData.password,
         Name: userData.Name,
         Lastname: userData.Lastname,
       });
-  
+      console.log(res.data);
+      
+      if (res.data.err == "")
+      {
+        window.location.href = "/Booking";
+      }
       console.log('User registered successfully');
     } catch (error) {
       console.error('Registration error:', error);
