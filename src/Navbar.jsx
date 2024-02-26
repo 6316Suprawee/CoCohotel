@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -8,12 +8,27 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
+  // Close dropdown when screen size is greater than 768px
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <nav className="nav">
       <div className="nav-header">
-      <a href="/">
-  <img style={{ width: 400, height: 70 }} src={require('./pages/image/CocoName.png')} alt="" />
-</a>
+        <a href="/">
+          <img style={{ width: 100, height: 80 }} src={require('./pages/image/Coco.png')} alt="" />
+        </a>
         <button className="menu-button" onClick={toggleDropdown}>
           ☰
         </button>

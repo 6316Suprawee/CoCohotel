@@ -1,29 +1,315 @@
-.book {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container_b {
+    width: 100%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
     text-align: center;
-}
-.box1{
-    display: flex;
-}
-.h1 {
-    text-align: left;
-}
-
-.btt {
-    text-align: center;
-    background-color: #eee98bff;
+    font-family: 'Sarabun', sans-serif;
+    background-color: #f8f9fa; /* Assuming a light background as seen in the screenshot */
+  }
+  
+  .title {
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .input-group {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px; /* Adjusted padding */
+    margin: 30px auto; /* Centering the input group */
+    width: 90%; /* Adjusted width to allow the box to take more space */
+    max-width: 1000px; /* Increased maximum width for a wider box */
+    border: none; /* No border for a flat design */
+  }
+  
+  .input-date {
+    width: 100%; /* Full width of the container */
+    padding: 15px 20px; /* Adjusted padding for larger touch area */
+    margin-bottom: 15px; /* Space between input fields */
+    border: 1px solid #d1d5db; /* Subtle border color */
+    border-radius: 8px; /* Slightly rounded edges for the inputs */
+    font-size: 16px; /* Adjusted font size for better readability */
+    box-shadow: none; /* No shadow for a flat design */
+    outline: none; /* Removes the default focus outline */
+  }
+  
+  .input-date:focus {
+    border-color: #93c5fd; /* Light blue border for focus state */
+  }
+  
+  .btn-submit {
+    width: 100%; /* Full width of the container */
+    padding: 15px 20px; /* Adjusted padding */
+    background-color: #3B82F6; /* Tailwind's blue color for the button */
+    color: white;
     border: none;
-    color: black; 
-    padding: 15px 15px;
+    border-radius: 8px; /* Slightly rounded edges for the button */
+    cursor: pointer;
+    font-size: 16px; /* Adjusted font size */
+    margin-top: 15px; /* Space between the last input field and the button */
+  }
+  
+  .btn-submit:hover {
+    background-color: #2563eb; /* A darker blue on hover */
+  }
+  
+  
+  /* Styles for the room selection and cards remain the same */
+  
+  .room-selection {
+    display: flex;
+    justify-content: space-between;
+    wrap: wrap;
+    gap: 20px; /* Adds space between the cards when wrapping */
+  }
+  
+  .room-card {
+  background-color: #00B4D8;
+  border-radius: 10px;
+  padding: 20px;
+  width: calc(33.333% - 20px); /* Three items per row, minus gap */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  }
+  
+  .room-card:hover {
+  transform: translateY(-5px);
+  }
+  
+  .room-image {
+  margin: 0 auto 20px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  padding: 20px;
+  background-color: #ffffff;
+  }
+  
+  .room-image img {
+  display: block;
+  width: 80px; /* Adjust as necessary */
+  height: 80px;
+  margin: 0 auto;
+  }
+  
+  .room-info {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  }
+  
+  .room-price {
+  font-size: 14px;
+  color: #ffffff;
+  }
+  @media (max-width: 768px) {
+    .input-group {
+      width: 95%; /* Slightly more width on smaller screens */
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .input-group {
+      width: 100%; /* Full width on very small screens */
+      padding: 15px; /* Smaller padding on very small screens */
+    }
+  }
+  .service-selection {
+    /* Add your styles for service options here */
+  }
+  
+  .confirmation {
+    margin-top: 20px;
+  }
+  .confirmation-detail {
+    background-color: #e0f2fe; /* Light blue background for detail cards */
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 15px; /* Space between detail cards */
+    cursor: pointer;
+    transition: background-color 0.3s;
     text-align: center;
-    display: inline-block;
-    font-size: 20px;
-    border-radius: 12px;
+    width: 80%; /* Adjust width as needed */
+    margin: 10px auto; /* Centering the card */
+  }
+  
+  .confirmation-detail:hover {
+    background-color: #bfdbfe; /* Darker shade on hover */
+  }
+  
+  .confirmation-detail2 {
+    background-color: #d1e7dd; /* A green background to indicate no extra charge */
+  }
+  .confirmation-detail1 {
+    background-color: #a5d8ff; /* Example of a different background color */
+  }
+  
+  .summary {
+    margin-top: 20px;
+  }
+  
+  .price-summary {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #2563eb;
+  }
+
+
+.form-input {
+width: calc(100% - 40px);
+margin-bottom: 20px;
+padding: 10px;
+border-radius: 5px;
+border: 1px solid #d1d5db;
 }
 
-.img {
-    flex: 1; /* ขยายให้เต็มความกว้างแนวนอน */
-    text-align: right; /* จัดรูปไปทางขวา */
+.btn-confirm {
+width: 100%;
+padding: 15px 20px;
+background-color: #3B82F6; 
+color: white;
+border: none;
+border-radius: 8px; 
+cursor: pointer;
+font-size: 16px; 
+margin-top: 20px; 
 }
+
+.btn-confirm:hover {
+background-color: #2563eb; /* Slightly darker shade on hover */
+}
+
+.confirmation-selection {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.confirmation-detail {
+background-color: #e0f2fe; /* Light blue background for detail cards /
+border-radius: 10px;
+padding: 15px 20px;
+margin-bottom: 15px; / Space between detail cards */
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.confirmation-detail:hover {
+background-color: #bfdbfe; /* Darker shade on hover */
+}
+
+.price-summary {
+font-size: 18px; /* Larger font size for the summary */
+margin-top: 20px;
+}
+
+.price {
+color: #1f2937; /* Darker text for the price */
+font-weight: bold;
+}
+
+.additional-info {
+font-size: 14px; /* Smaller font size for additional info /
+color: #6b7280; / Grey text for additional info */
+margin-top: 20px;
+}
+.confirmation-card {
+    max-width: 400px; /* Or your preferred width */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .confirmation-title {
+    margin-bottom: 16px;
+    color: #333333;
+    font-size: 18px; /* Or your preferred size */
+    font-weight: bold;
+  }
+  
+  .confirmation-text {
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 8px; /* Or your preferred spacing */
+  }
+  
+  .confirmation-button {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 24px; /* Or your preferred spacing */
+    background-color: #4F46E5; /* Or your preferred button color */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px; /* Or your preferred size */
+    cursor: pointer;
+  }
+  
+  .confirmation-button:hover {
+    background-color: #4338CA; /* Or a darker shade for hover state */
+  }
+  .input-file {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+  }
+  
+  .button-upload {
+    background-color: #4f46e5; /* This is a blue shade, you can adjust the color as needed */
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem; /* 6px */
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .button-upload:hover {
+    background-color: #4338ca; /* Darker blue on hover */
+  }
+  
+  .file-name {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #64748b;
+  }
+  .done-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .done-icon {
+    color: #4CAF50; /* Adjust the color to match the check icon in your image */
+    font-size: 24px; /* Adjust size as needed */
+    margin-bottom: 10px;
+  }
+  
+  .done-message {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 18px; /* Adjust size as needed */
+  }
+  
+  .done-button {
+    background-color: #007bff; /* Adjust the color to match your image */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px; /* This gives a pill-like shape */
+    cursor: pointer;
+    font-size: 16px; /* Adjust size as needed */
+    color: black;
+    text-decoration: none;
+  }
+  
+  .done-button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+  }

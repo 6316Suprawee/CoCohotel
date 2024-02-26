@@ -2,8 +2,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 98%;
   z-index: 9999; /* to keep it on top of other elements */
+  background-color: #ffffff;
+  border-radius: 10px;
 }
   .nav-header {
     width: 100%;
@@ -41,7 +43,7 @@
     top: 60px; /* Adjust based on the height of your navbar */
     left: 0;
     width: 100%;
-    background-color: #eee98b;
+    background-color: #ffffff;
 }
 
   
@@ -59,51 +61,44 @@
     border-radius: 12px;
     padding: 0.5rem 1rem;
   }
-  
-  /* Responsive styles */
-  @media screen and (max-width: 768px) {
-    .menu-button {
-      display: block;
-      background-color: inherit;
-      padding: 1rem 1.5rem;
-      font-size: 24px;
-      background-color: #eee98b;
-      border-radius: 12px;
-    }
-  
-    .nav-list {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      background-color: white; /* Background color set to white when zoomed in */
-    }
-  
-    .nav-list.open {
-      display: flex;
-      justify-content: center;  /* Center vertically */
-      align-items: center;      /* Center horizontally */
-    }
-  
-    .nav-list li {
-      width: 100%;
-      text-align: center;  /* Center text */
-    }
-  
-    .btn-container {
-      width: 100%;
-      text-align: center;
-    }
+ /* Responsive styles */
+@media screen and (max-width: 768px) {
+  .menu-button {
+    display: block;
+    background-color: inherit;
+    padding: 1rem 1.5rem;
+    font-size: 24px;
+    background-color: white;
+    border-radius: 12px;
   }
-  
-  @media screen and (min-width: 769px) {
-    .nav {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
-    .nav-list {
-      justify-content: flex-end;  /* Shift nav items to the right */
-    }
+
+  .nav-list {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
   }
-  
+
+  .nav-list.open {
+    display: flex;
+    flex-direction: column; /* Ensure dropdown is below the button */
+    align-items: center; /* Center dropdown items horizontally */
+    top: calc(100% + 15px); /* Adjust based on spacing */
+  }
+
+  .nav-list li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-container {
+    width: 100%;
+    text-align: center;
+  }
+}
