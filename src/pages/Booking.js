@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Booking.css'; // Ensure your CSS file is correctly imported
 import QR from './image/qrcode.png';
+// import {decode as base64_decode, encode as base64_encode} from 'base-64';
 import axios from 'axios'; // Import Axios for making HTTP requests
 
 const ROOMS = [
@@ -25,10 +26,59 @@ export default function Booking() {
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [phoneInput, setPhoneInput] = useState('');
+  const [imagePreview, setImagePreview] = useState(''); // Added state for image preview
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
   };
+
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    const base64 = await convertToBase64(file);
+    setSelectedFile(base64);
+  };
+
+  const handleUpload = () => {
+    const reservationData = {
+      roomType: selectedRoom.type,
+      price: selectedRoom.price + additionalPrice,
+      checkInDate: checkInDate,
+      checkOutDate: checkOutDate,
+      confirmationDetails: 'Your confirmation details here', // Add more confirmation details as needed
+      name: nameInput,
+      email: emailInput,
+      phoneNumber: phoneInput, // Add phone number
+      selectedFile: selectedFile // Pass image preview as base64 string
+      // Add other necessary data here
+    };
+
+    console.log(selectedFile);
+    axios.post('http://localhost:3001/api/reservations', reservationData)
+    .then(response => {
+      console.log('Reservation saved:', response.data);
+      setStep('Done');
+    })
+    .catch(error => {
+      console.error('Error saving reservation:', error);
+      // Handle error here
+    });
+   
+  };
+
+  useEffect(() => {
+    console.log(selectedFile)
+  }, [selectedFile]);
 
   const handleRoomSelection = (room) => {
     setSelectedRoom(room);
@@ -50,20 +100,24 @@ export default function Booking() {
       name: nameInput,
       email: emailInput,
       phoneNumber: phoneInput, // Add phone number
-      selectedFile: selectedFile // Add selected file
+      selectedFile: selectedFile // Pass image preview as base64 string
       // Add other necessary data here
     };
 
+    console.log(reservationData)
+
+    setStep('Upload')
+
     // Send reservation data to the server
-    axios.post('http://localhost:3001/api/reservations', reservationData)
-      .then(response => {
-        console.log('Reservation saved:', response.data);
-        setStep('Upload');
-      })
-      .catch(error => {
-        console.error('Error saving reservation:', error);
-        // Handle error here
-      });
+    // axios.post('http://localhost:3001/api/reservations', reservationData)
+    //   .then(response => {
+    //     console.log('Reservation saved:', response.data);
+    //     setStep('Upload');
+    //   })
+    //   .catch(error => {
+    //     console.error('Error saving reservation:', error);
+    //     // Handle error here
+    //   });
   };
 
   const handleSubmit = () => {
@@ -71,10 +125,7 @@ export default function Booking() {
     setStep('selectRoom');
   };
 
-  const handleUpload = () => {
-    console.log(selectedFile);
-    setStep('Done');
-  };
+
 
   if (step === 'selectDate') {
     return (
