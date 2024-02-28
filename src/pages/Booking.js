@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Booking.css'; // Ensure your CSS file is correctly imported
 import QR from './image/qrcode.png';
+import axios from 'axios'; // Import Axios for making HTTP requests
+
 const ROOMS = [
   { type: 'ห้องพัดลม', price: 100 },
   { type: 'ห้องเตียงคู่อากาศ', price: 250 },
@@ -14,12 +16,15 @@ const CONFIRMATION_DETAILS = [
 ];
 
 export default function Booking() {
-  const [step, setStep] = useState('selectDate'); // Start with 'selectDate'
+  const [step, setStep] = useState('selectDate');
   const [selectedRoom, setSelectedRoom] = useState({});
   const [additionalPrice, setAdditionalPrice] = useState(0);
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
+  const [nameInput, setNameInput] = useState('');
+  const [emailInput, setEmailInput] = useState('');
+  const [phoneInput, setPhoneInput] = useState('');
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -36,26 +41,40 @@ export default function Booking() {
   };
 
   const handleFinalConfirmation = () => {
-    console.log(`Room: ${selectedRoom.type}, Total Price: ${selectedRoom.price + additionalPrice}`);
-    setStep('Upload'); // Change step to 'Upload' after final confirmation
+    const reservationData = {
+      roomType: selectedRoom.type,
+      price: selectedRoom.price + additionalPrice,
+      checkInDate: checkInDate,
+      checkOutDate: checkOutDate,
+      confirmationDetails: 'Your confirmation details here', // Add more confirmation details as needed
+      name: nameInput,
+      email: emailInput,
+      phoneNumber: phoneInput, // Add phone number
+      selectedFile: selectedFile // Add selected file
+      // Add other necessary data here
+    };
+
+    // Send reservation data to the server
+    axios.post('http://localhost:3001/api/reservations', reservationData)
+      .then(response => {
+        console.log('Reservation saved:', response.data);
+        setStep('Upload');
+      })
+      .catch(error => {
+        console.error('Error saving reservation:', error);
+        // Handle error here
+      });
   };
 
   const handleSubmit = () => {
     console.log(`Check-In Date: ${checkInDate}, Check-Out Date: ${checkOutDate}`);
-    setStep('selectRoom'); // Move to 'selectRoom' after submitting dates
+    setStep('selectRoom');
   };
+
   const handleUpload = () => {
-    // Here you can write the code to upload the selected file
-    // For simplicity, let's just log the file information
-  
     console.log(selectedFile);
     setStep('Done');
-};
-const Doneprocess = () => {
-  // Here you can write the code to upload the selected file
-  // For simplicity, let's just log the file information
-  console.log(selectedFile);
-};
+  };
 
   if (step === 'selectDate') {
     return (
@@ -112,63 +131,56 @@ const Doneprocess = () => {
     );
   } else if (step === 'enterDetails') {
     return (
-        <div className="container_b">
-          {/* Include the additionalPrice in the form and final confirmation */}
-          <h1 className="title">ข้อมูลผู้เข้าพัก</h1>
-          <form className="booking-form">
-            <input type="text" placeholder="ชื่อ-นามสกุล" className="form-input" />
-            <input type="text" placeholder="หมายเลขโทรศัพท์" className="form-input" />
-            <input type="text" placeholder="อีเมล" className="form-input" />
-          </form>
-          <div className="confirmation">
-            <button className="btn-confirm" onClick={handleFinalConfirmation}>ยืนยัน</button>
-          </div>
-          <div className="price-summary">
-            ราคารวม <span className="price">{selectedRoom.price + additionalPrice}บาท</span>
-          </div>
+      <div className="container_b">
+        <h1 className="title">ข้อมูลผู้เข้าพัก</h1>
+        <form className="booking-form">
+          <input type="text" placeholder="ชื่อ-นามสกุล" className="form-input" onChange={(e) => setNameInput(e.target.value)} />
+          <input type="text" placeholder="อีเมล" className="form-input" onChange={(e) => setEmailInput(e.target.value)} />
+          <input type="text" placeholder="หมายเลขโทรศัพท์" className="form-input" onChange={(e) => setPhoneInput(e.target.value)} />
+        </form>
+        <div className="confirmation">
+          <button className="btn-confirm" onClick={handleFinalConfirmation}>ยืนยัน</button>
         </div>
-      );
-    } else if (step === 'Upload') {
-        return (
-            <div className="container">
-              <div>Upload Slip</div>
-                <img  style={{ width: 120, height: 100 }} src={QR} alt="QR" />
-                <div>พร้อมเพย์ : 09xxxxxxxx</div>
-            <input
-              type="file"
-              onChange={handleFileChange}
-              className="input-file"
-            />
-            <button
-              onClick={handleUpload}
-              className="button-upload"
-            >
-              ยืนยันการชำระเงิน
-            </button>
-            {/* Display the selected file name */}
-            {selectedFile && (
-              <div className="file-name">
-                {selectedFile.name}
-              </div>
-            )}
+        <div className="price-summary">
+          ราคารวม <span className="price">{selectedRoom.price + additionalPrice}บาท</span>
+        </div>
+      </div>
+    );
+  } else if (step === 'Upload') {
+    return (
+      <div className="container">
+        <div>Upload Slip</div>
+        <img style={{ width: 120, height: 100 }} src={QR} alt="QR" />
+        <div>พร้อมเพย์ : 09xxxxxxxx</div>
+        <input
+          type="file"
+          onChange={handleFileChange}
+          className="input-file"
+        />
+        <button
+          onClick={handleUpload}
+          className="button-upload"
+        >
+          ยืนยันการชำระเงิน
+        </button>
+        {selectedFile && (
+          <div className="file-name">
+            {selectedFile.name}
           </div>
-        );
-        
-    }
-    else if (step === 'Done') {
-      return (
-        <div className="done-container">
+        )}
+      </div>
+    );
+  } else if (step === 'Done') {
+    return (
+      <div className="done-container">
         <div className="done-icon">
           <i className="fas fa-check-circle"></i> {/* FontAwesome icon */}
         </div>
         <div className="done-message">
           ชำระเงินเสร็จสิ้น
         </div>
-        <button  className="done-button"><a href='/'>กลับหน้าหลัก</a>
-          
-        </button>
-        
+        <button className="done-button"><a href='/'>กลับหน้าหลัก</a></button>
       </div>
-      );
-          } 
+    );
+  }
 }
