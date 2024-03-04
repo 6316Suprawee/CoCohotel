@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Admin_login.css';
-
+import AdminPage from './Adminpage';
 const Admin_login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

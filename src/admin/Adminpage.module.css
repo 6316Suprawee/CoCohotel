@@ -2,13 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   padding: 2rem; /* Added padding to prevent items from touching the edges */
 }
 
 .gridContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Adjusted for equal distribution */
+  grid-template-columns: repeat(4, 1fr); /* Adjusted for equal distribution */
   gap: 2rem; /* Increased gap for more space between items */
 }
 
@@ -21,6 +21,7 @@
   text-align: center;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease; /* Smooth transition for hover effect */
+  text-decoration: none; /* Remove underline */
 }
 
 .menuItem:hover {
@@ -38,14 +39,6 @@
 
 .pink {
   background-color: #ec4899;
-}
-
-.green {
-  background-color: #22c55e;
-}
-
-.teal {
-  background-color: #14b8a6;
 }
 
 .gray {

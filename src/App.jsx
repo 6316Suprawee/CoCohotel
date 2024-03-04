@@ -7,8 +7,12 @@ import Login from "./pages/Login"
 import MemberRegister from "./pages/MemberRegister"
 import Room from "./pages/Room"
 import LiveStream from "./pages/LiveStream"
-import Admin_login from "./pages/Admin_login"
-import Adminpage from './pages/Adminpage';
+import Adminpage from "./admin/Adminpage"
+import Admin_login from "./admin/Admin_login";
+import Admin_camera from './admin/Admin_camera';
+import Admin_edit_site from './admin/Admin_edit_site';
+import Adminbooking from './admin/Adminbooking';
+
 function App() {
   let component;
   let adminComponent;
@@ -40,6 +44,9 @@ function App() {
       break;
     case "/Adminpage":
       adminComponent = <Adminpage />;
+      break;
+    case "/Admin_camera":
+      adminComponent = <Admin_camera/>;
       break;
     default:
       component = null; // Handle default case
