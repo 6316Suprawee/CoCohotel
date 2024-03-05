@@ -9,7 +9,7 @@ import Admin_login from './Admin_login';
 const menuItems = [
   { text: 'แก้ไขเว็บไซด์', colorClass: 'red', path: '/Admin_edit_site' },
   { text: 'การจอง', colorClass: 'blue', path: '/Adminbooking' },
-  { text: 'จัดการกล้อง', colorClass: 'pink', path: '/camera-management' },
+  { text: 'จัดการกล้อง', colorClass: 'pink', path: '/Admin_camera' },
   { text: 'Logout', colorClass: 'gray', path: '/Admin_login' } // Assuming you have a logout or similar page
 ];
 
@@ -28,3 +28,4 @@ const AdminPage = () => {
 };
 
 export default AdminPage;
+
