@@ -46,15 +46,9 @@ const Login = () => {
         <a href="/forgot-password" className="forgot-password-link">Forgot Password</a>
       </div>
       <div className='login-container'>
-        <div className='login-button' onClick={handleLogin}>
-          Login
-        </div>
-        <div className='google-login-button'>
-          <button className="google-button">Login with Google</button>
-        </div>
-        <div className='facebook-login-button'>
-          <button className="facebook-button">Login with Facebook</button>
-        </div>
+        <div className='login-button' onClick={handleLogin}>Login</div>
+          <button className="login-button">Login with Google</button>
+          <button className="login-button">Login with Facebook</button>
       </div>
     </div>
   );
