@@ -34,11 +34,9 @@ const Login = () => {
       </div>
       <div className="inputs">
         <div className="input">
-          <img style={{ width: 40, height: 30 }} src={require('./image/mail_646094.png')} alt="" />
           <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div className="input">
-          <img style={{ width: 40, height: 30 }} src={require('./image/padlock_2889676.png')} alt="" />
           <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
       </div>

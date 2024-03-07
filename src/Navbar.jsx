@@ -27,12 +27,12 @@ export default function Navbar() {
     <nav className="nav">
       <div className="nav-header">
         <a href="/">
-          <img style={{ width: 100, height: 80 }} src={require('./pages/image/Coco.png')} alt="" />
+          <img src={require('./pages/image/Coco.png')} alt="" />
         </a>
-        <button className="menu-button" onClick={toggleDropdown}>
+      </div>
+      <button className="menu-button" onClick={toggleDropdown}>
           ☰
         </button>
-      </div>
       <ul className={`nav-list ${isOpen ? 'open' : ''}`}>
         <li><a href="/Room">Room</a></li>
         <li><a href="/About">About us</a></li>

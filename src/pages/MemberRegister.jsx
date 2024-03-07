@@ -72,23 +72,23 @@ const MemberRegister = () => {
       </div>
       <div className="inputs">
         <div className="input">
-          <img style={{ width: 40, height: 30 }} src={require('./image/user_1144760.png')} alt="" />
+          <img style={{ width: 30, height: 30 }} src={require('./image/user_1144760.png')} alt="" />
           <input type="text" name="Name" placeholder="Name" value={userData.Name} onChange={handleInputChange} />
         </div>
         <div className="input">
-          <img style={{ width: 40, height: 30 }} src={require('./image/user_1144760.png')} alt="" />
+          <img style={{ width: 30, height: 30 }} src={require('./image/user_1144760.png')} alt="" />
           <input type="text" name="Lastname" placeholder="Lastname" value={userData.Lastname} onChange={handleInputChange} />
         </div>
         <div className="input">
-          <img style={{ width: 40, height: 30 }} src={require('./image/mail_646094.png')} alt="" />
+          <img style={{ width: 30, height: 30 }} src={require('./image/mail_646094.png')} alt="" />
           <input type="email" name="email" placeholder="Email" value={userData.email} onChange={handleInputChange} />
         </div>
         <div className="input">
-          <img style={{ width: 40, height: 30 }} src={require('./image/padlock_2889676.png')} alt="" />
+          <img style={{ width: 30, height: 30 }} src={require('./image/padlock_2889676.png')} alt="" />
           <input type="password" name="password" placeholder="Password" value={userData.password} onChange={handleInputChange} />
         </div>
         <div className="input">
-          <img style={{ width: 40, height: 30 }} src={require('./image/padlock_2889676.png')} alt="" />
+          <img style={{ width: 30, height: 30 }} src={require('./image/padlock_2889676.png')} alt="" />
           <input type="password" name="confirmPassword" placeholder="Confirm password" value={userData.confirmPassword} onChange={handleInputChange} />
         </div>
       </div>
