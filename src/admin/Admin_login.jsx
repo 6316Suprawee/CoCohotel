@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './Admin_login.css';
 import AdminPage from './Adminpage';
+import axios from 'axios';
+
 const Admin_login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // เพิ่ม state สำหรับตรวจสอบการล็อกอิน
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -13,11 +16,21 @@ const Admin_login = () => {
     setPassword(e.target.value);
   };
 
-  const handleLogin = () => {
-    // You can implement your login logic here
-    console.log("Username:", username);
-    console.log("Password:", password);
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:3001/api/admin/login', { username, password });
+      console.log(response.data.message);
+      setIsLoggedIn(true); // ตั้งค่า state เป็น true เมื่อล็อกอินสำเร็จ
+    } catch (error) {
+      console.error('Login failed:', error.response.data.error);
+      // Display error message to the user
+      // You can update state to show an error message on the login form
+    }
   };
+
+  if (isLoggedIn) {
+    return <AdminPage />; // เมื่อล็อกอินสำเร็จแล้วให้แสดงหน้า AdminPage
+  }
 
   return (
     <div className="login-container">
