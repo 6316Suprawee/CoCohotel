@@ -30,9 +30,9 @@ export default function Navbar() {
           <img src={require('./pages/image/Coco.png')} alt="" />
         </a>
       </div>
-      <button className="menu-button" onClick={toggleDropdown}>
-          ☰
-        </button>
+      <div className="menu-button-nav">
+        <button onClick={()=>toggleDropdown()}>☰</button>
+      </div>
       <ul className={`nav-list ${isOpen ? 'open' : ''}`}>
         <li><a href="/Room">Room</a></li>
         <li><a href="/About">About us</a></li>

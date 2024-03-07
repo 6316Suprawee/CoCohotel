@@ -23,12 +23,8 @@
     text-decoration: none;
   }
   
-  .menu-button {
+  .menu-button-nav button{
     display: none;
-    border: none;
-    color: black;
-    padding: 1rem 1.5rem;  /* Increased padding */
-    font-size: 24px;       /* Increased font size */
   }
   
   .nav-list {
@@ -63,10 +59,19 @@
   }
  /* Responsive styles */
 @media screen and (max-width: 768px) {
-  .menu-button {
-    display: block;
-    width: 10%;
-    align-items: center;
+  .menu-button-nav button{
+    display: flex;
+    width: 15%;
+    border: none;
+    color: black;
+    font-size: 24px;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
   }
 
   .nav-list {
