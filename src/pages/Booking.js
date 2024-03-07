@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './Booking.css'; // Ensure your CSS file is correctly imported
+import './Booking.css';
 import QR from './image/qrcode.png';
-// import {decode as base64_decode, encode as base64_encode} from 'base-64';
-import axios from 'axios'; // Import Axios for making HTTP requests
+import axios from 'axios';
 
 const ROOMS = [
   { type: 'ห้องพัดลม', price: 100 },
@@ -13,7 +12,6 @@ const ROOMS = [
 const CONFIRMATION_DETAILS = [
   { id: 1, text: 'ต้องการใช้กล้อง', additionalPrice: 50 },
   { id: 2, text: 'ไม่ต้องการใช้กล้อง', additionalPrice: 0 },
-  // Add more confirmation details as needed
 ];
 
 export default function Booking() {
@@ -26,9 +24,6 @@ export default function Booking() {
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [phoneInput, setPhoneInput] = useState('');
-  const [imagePreview, setImagePreview] = useState(''); // Added state for image preview
-
-
 
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -50,30 +45,27 @@ export default function Booking() {
   };
 
   const handleUpload = () => {
+    const base64Data = selectedFile.split(',')[1];
     const reservationData = {
       roomType: selectedRoom.type,
       price: selectedRoom.price + additionalPrice,
       checkInDate: checkInDate,
       checkOutDate: checkOutDate,
-      confirmationDetails: 'Your confirmation details here', // Add more confirmation details as needed
+      confirmationDetails: 'Your confirmation details here',
       name: nameInput,
       email: emailInput,
-      phoneNumber: phoneInput, // Add phone number
-      selectedFile: selectedFile // Pass image preview as base64 string
-      // Add other necessary data here
+      phoneNumber: phoneInput,
+      selectedFile: base64Data
     };
 
-    console.log(selectedFile);
     axios.post('http://localhost:3001/api/reservations', reservationData)
-    .then(response => {
-      console.log('Reservation saved:', response.data);
-      setStep('Done');
-    })
-    .catch(error => {
-      console.error('Error saving reservation:', error);
-      // Handle error here
-    });
-   
+      .then(response => {
+        console.log('Reservation saved:', response.data);
+        setStep('Done');
+      })
+      .catch(error => {
+        console.error('Error saving reservation:', error);
+      });
   };
 
   useEffect(() => {
@@ -91,41 +83,13 @@ export default function Booking() {
   };
 
   const handleFinalConfirmation = () => {
-    const reservationData = {
-      roomType: selectedRoom.type,
-      price: selectedRoom.price + additionalPrice,
-      checkInDate: checkInDate,
-      checkOutDate: checkOutDate,
-      confirmationDetails: 'Your confirmation details here', // Add more confirmation details as needed
-      name: nameInput,
-      email: emailInput,
-      phoneNumber: phoneInput, // Add phone number
-      selectedFile: selectedFile // Pass image preview as base64 string
-      // Add other necessary data here
-    };
-
-    console.log(reservationData)
-
-    setStep('Upload')
-
-    // Send reservation data to the server
-    // axios.post('http://localhost:3001/api/reservations', reservationData)
-    //   .then(response => {
-    //     console.log('Reservation saved:', response.data);
-    //     setStep('Upload');
-    //   })
-    //   .catch(error => {
-    //     console.error('Error saving reservation:', error);
-    //     // Handle error here
-    //   });
+    setStep('Upload');
   };
 
   const handleSubmit = () => {
     console.log(`Check-In Date: ${checkInDate}, Check-Out Date: ${checkOutDate}`);
     setStep('selectRoom');
   };
-
-
 
   if (step === 'selectDate') {
     return (
@@ -225,7 +189,7 @@ export default function Booking() {
     return (
       <div className="done-container">
         <div className="done-icon">
-          <i className="fas fa-check-circle"></i> {/* FontAwesome icon */}
+          <i className="fas fa-check-circle"></i>
         </div>
         <div className="done-message">
           ชำระเงินเสร็จสิ้น
