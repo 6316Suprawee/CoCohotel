@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -15,6 +14,18 @@ export default function AdminBooking() {
       })));
     } catch (error) {
       console.error('Error fetching booking data:', error);
+    }
+  };
+
+  // Function to delete booking data
+  const deleteBooking = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3001/api/reservations/${id}`);
+      console.log('Reservation deleted successfully');
+      // After deletion, fetch updated data
+      fetchBookingData();
+    } catch (error) {
+      console.error('Error deleting booking:', error);
     }
   };
 
@@ -46,6 +57,7 @@ export default function AdminBooking() {
             {booking.confirmationDetails && (
               <p>Confirmation Details: {booking.confirmationDetails}</p>
             )}
+            <button onClick={() => deleteBooking(booking._id)}>Delete</button>
           </div>
         ))}
       </div>
